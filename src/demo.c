@@ -9,6 +9,8 @@
 #include "demo.h"
 #include <sys/time.h>
 
+#include "server.h"
+
 #define FRAMES 3
 #define DEMO 1
 
@@ -36,13 +38,20 @@ static int demo_index = 0;
 static image images[FRAMES];
 static float *avg;
 
+char * matrix_buffer;
+
 void *fetch_in_thread(void *ptr)
 {
-    in = get_image_from_stream(cap);
+    //in = get_image_from_stream(cap);
+	in = get_image_from_client();
     if(!in.data){
         error("Stream closed.");
     }
     in_s = letterbox_image(in, net.w, net.h);
+
+
+    free(matrix_buffer);
+    matrix_buffer = recieveMatrixString();
     return 0;
 }
 
@@ -77,6 +86,7 @@ void *detect_in_thread(void *ptr)
     demo_index = (demo_index + 1)%FRAMES;
 
     draw_detections(det, l.w*l.h*l.n, demo_thresh, boxes, probs, demo_names, demo_alphabet, demo_classes);
+    sendDetections(det, matrix_buffer, l.w*l.h*l.n, demo_thresh, boxes, probs, demo_names, demo_alphabet, demo_classes);
 
     return 0;
 }
@@ -113,6 +123,7 @@ void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const ch
         printf("video file: %s\n", filename);
         cap = cvCaptureFromFile(filename);
     }else{
+    	/*
         cap = cvCaptureFromCAM(cam_index);
 
         if(w){
@@ -124,9 +135,10 @@ void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const ch
         if(frames){
             cvSetCaptureProperty(cap, CV_CAP_PROP_FPS, frames);
         }
+        */
     }
 
-    if(!cap) error("Couldn't connect to webcam.\n");
+    //if(!cap) error("Couldn't connect to webcam.\n");
 
     layer l = net.layers[net.n-1];
     int j;
