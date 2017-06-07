@@ -11,8 +11,8 @@ For more information see the [Darknet project website](http://pjreddie.com/darkn
 For questions or issues please use the [Google Group](https://groups.google.com/forum/#!forum/darknet).
 
 # Differences from Original
-Changes made to original darknet code are in src/demo.c
-Server.h/c contain functionality to interface with Hololens clients
+Changes made to original darknet code are in [src/demo.c](src/demo.c)  
+[server.h](src/server.h) and [server.c](src/server.c) contain functionality to interface with a HoloLens client.
 
 To run server, use:  
 `./darknet detector demo /cfg/coco.data /cfg/yolo.cfg yolo.weights`
