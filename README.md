@@ -14,5 +14,5 @@ To run the server, use:
 To run the server without having to hassle with old cuda and opencv versions (you really don't), with [Nvidia Docker](https://github.com/NVIDIA/nvidia-docker) installed, use:
 ```
 docker build -t yolo-server .
-docker run --runtime=nvidia -it yolo-server
+docker run --runtime=nvidia -p 11000:11000 -it yolo-server
 ```
