@@ -1,4 +1,4 @@
-This code is modified from Darknet by [Joseph Redmon](https://github.com/pjreddie)   
+This code is forked from Darknet by [Joseph Redmon](https://github.com/pjreddie)   
 https://github.com/pjreddie/darknet
 
 # Differences from Original
