@@ -1,18 +1,18 @@
-This code is modified from Darknet by [Joseph Redmon](https://github.com/pjreddie)   
+This code is forked from Darknet by [Joseph Redmon](https://github.com/pjreddie)   
 https://github.com/pjreddie/darknet
 
-![Darknet Logo](http://pjreddie.com/media/files/darknet-black-small.png)
-
-# Darknet
-Darknet is an open source neural network framework written in C and CUDA. It is fast, easy to install, and supports CPU and GPU computation.
-
-For more information see the [Darknet project website](http://pjreddie.com/darknet).
-
-For questions or issues please use the [Google Group](https://groups.google.com/forum/#!forum/darknet).
-
-# Differences from Original
-Changes made to original darknet code are in [src/demo.c](src/demo.c)  
+## Differences from Original
+Changes made to original darknet code (at the time) are in [src/demo.c](src/demo.c).  
 [server.h](src/server.h) and [server.c](src/server.c) contain functionality to interface with a HoloLens client.
 
-To run server, use:  
-`./darknet detector demo /cfg/coco.data /cfg/yolo.cfg yolo.weights`
+## To Run:
+
+To run the server, use:  
+```
+./darknet detector demo /cfg/coco.data /cfg/yolo.cfg yolo.weights
+```
+To run the server without having to hassle with old cuda and opencv versions (you really don't), with [Nvidia Docker](https://github.com/NVIDIA/nvidia-docker) installed, use:
+```
+docker build -t yolo-server .
+docker run --runtime=nvidia -p 11000:11000 -it yolo-server
+```
