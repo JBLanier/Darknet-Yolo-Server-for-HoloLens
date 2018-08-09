@@ -164,5 +164,8 @@ RUN mkdir \git && cd git && git clone https://github.com/JBLanier/Darknet-Yolo-S
 
 WORKDIR /git/Darknet-Yolo-Server-for-HoloLens/
 
+
+EXPOSE 11000
+
 # Default command when running the image
 CMD ./darknet detector demo cfg/coco.data cfg/yolo.2.0.cfg yolov2.weights
