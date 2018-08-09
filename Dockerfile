@@ -160,12 +160,14 @@ RUN tar cvzf opencv-$OPENCV_VERSION.tar.gz --directory=$OPENCV_INSTALL_PATH .
 # Set up Yolo Hololens server
 RUN mkdir \git && cd git && git clone https://github.com/JBLanier/Darknet-Yolo-Server-for-HoloLens && cd Darknet-Yolo-Server-for-HoloLens \
     && make \
-    && wget https://pjreddie.com/media/files/yolov2.weights
+    && wget https://pjreddie.com/media/files/yolo.weights
 
 WORKDIR /git/Darknet-Yolo-Server-for-HoloLens/
 
+RUN apt-get update && \
+        apt-get install -y xvfb
 
 EXPOSE 11000
 
 # Default command when running the image
-CMD ./darknet detector demo cfg/coco.data cfg/yolo.2.0.cfg yolov2.weights
+CMD xvfb-run ./darknet detector demo cfg/coco.data cfg/yolo.cfg yolo.weights
