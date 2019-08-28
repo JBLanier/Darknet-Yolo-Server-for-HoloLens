@@ -1,3 +1,6 @@
+Serverside inference for object annotation using the HoloLens 1.
+The HoloLens client is [here](https://github.com/JBLanier/Darknet-Yolo-Client-for-HoloLens).
+
 This code is forked from Darknet by [Joseph Redmon](https://github.com/pjreddie)   
 https://github.com/pjreddie/darknet
 
