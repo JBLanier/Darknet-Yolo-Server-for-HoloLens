@@ -21,7 +21,7 @@ For more details, check out the [darknet installation guide](https://pjreddie.co
 
 To run the server, use:  
 ```
-./darknet detector demo /cfg/coco.data /cfg/yolo.cfg yolo.weights
+./darknet detector demo cfg/coco.data cfg/yolo.cfg yolo.weights
 ```
 To run the server without having to hassle with old cuda and opencv versions (you really don't), with [Nvidia Docker](https://github.com/NVIDIA/nvidia-docker) installed, use:
 ```
