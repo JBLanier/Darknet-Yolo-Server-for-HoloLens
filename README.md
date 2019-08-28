@@ -8,7 +8,7 @@ Changes made to original darknet code (at the time) are in [src/demo.c](src/demo
 ## Installation
 If you can, just use nvidia-docker. 
 
-If not, you need to first install OpenCV 2.4.13, CUDA 8, and Cudnn 5 (other versions may work but I've only tested with these on linux). 
+If not, you need to first install OpenCV 2.4.13, CUDA 8, and Cudnn 5 (other versions may work, but I've only tested with these on linux). 
 
 Then compile with 
 ```
